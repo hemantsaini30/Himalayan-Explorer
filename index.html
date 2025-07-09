@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himalayan Explorer Pro | Complete Mountain Travel Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ========== Header ========== -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913108.png" alt="Mountain Logo">
+                <span>Himalayan Explorer</span>
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#treks"><i class="fas fa-hiking"></i> Treks</a>
+                <a href="#features"><i class="fas fa-star"></i> Features</a>
+                <a href="#emergency"><i class="fas fa-phone-alt"></i> Emergency</a>
+                <a href="#tips"><i class="fas fa-info-circle"></i> Tips</a>
+                <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
+                <button id="darkModeToggle" class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- ========== Hero Section ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Himalayan Wonderland</h1>
+            <p>Your complete guide to trekking, travel tips, and mountain adventures in the Indian Himalayas</p>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search for treks, places, or tips...">
+                <button><i class="fas fa-search"></i> Explore</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== Features Section ========== -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Your Complete Mountain Toolkit</h2>
+            <p>Everything you need for a safe and memorable Himalayan adventure</p>
+        </div>
+        
+        <div class="features-grid">
+            <!-- Feature 1 - Enhanced Interactive Maps -->
+            <div class="feature-card" data-feature="maps">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Interactive Trek Maps</h3>
+                <p>Detailed topographic maps with elevation profiles and key waypoints for every major trek</p>
+                <div class="feature-expand">
+                    <div class="map-preview">
+                        <div id="mini-map-1" class="mini-map"></div>
+                        <p>Click to view detailed 3D terrain maps with campsites, water sources, and danger zones marked</p>
+                    </div>
+                    <button class="btn btn-small">Explore Maps</button>
+                </div>
+            </div>
+            
+            <!-- Feature 2 - Enhanced Weather Updates -->
+            <div class="feature-card" data-feature="weather">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud-sun-rain"></i>
+                </div>
+                <h3>Live Weather Updates</h3>
+                <p>Real-time weather forecasts and avalanche risk assessments for your route</p>
+                <div class="feature-expand">
+                    <div class="weather-widget">
+                        <div class="weather-day">
+                            <span>Today</span>
+                            <i class="fas fa-sun weather-icon sunny"></i>
+                            <span>22°C</span>
+                        </div>
+                        <div class="weather-day">
+                            <span>Tomorrow</span>
+                            <i class="fas fa-cloud-rain weather-icon rainy"></i>
+                            <span>18°C</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-small">View Detailed Forecast</button>
+                </div>
+            </div>
+            
+            <!-- Feature 3 - Enhanced Altitude Calculator -->
+            <div class="feature-card" data-feature="altitude">
+                <div class="feature-icon">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <h3>Altitude Calculator</h3>
+                <p>Plan your acclimatization schedule with our smart altitude calculator</p>
+                <div class="feature-expand">
+                    <div class="altitude-meter">
+                        <div class="altitude-bar" style="height: 40%;"></div>
+                        <span class="altitude-label">3,658m</span>
+                    </div>
+                    <p>Recommended acclimatization stops for your selected trek</p>
+                    <button class="btn btn-small">Calculate Schedule</button>
+                </div>
+            </div>
+            
+            <!-- Feature 4 - Enhanced Packing Wizard -->
+            <div class="feature-card" data-feature="packing">
+                <div class="feature-icon">
+                    <i class="fas fa-suitcase-rolling"></i>
+                </div>
+                <h3>Packing Wizard</h3>
+                <p>Personalized packing lists based on season, trek difficulty and duration</p>
+                <div class="feature-expand">
+                    <div class="packing-checklist">
+                        <div class="packing-item checked">Hiking boots</div>
+                        <div class="packing-item checked">Waterproof jacket</div>
+                        <div class="packing-item">Trekking poles</div>
+                    </div>
+                    <button class="btn btn-small">Generate Packing List</button>
+                </div>
+            </div>
+            
+            <!-- Feature 5 - Enhanced Emergency Network -->
+            <div class="feature-card" data-feature="emergency">
+                <div class="feature-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Emergency Network</h3>
+                <p>Direct access to mountain rescue services and local emergency contacts</p>
+                <div class="feature-expand">
+                    <div class="emergency-contacts">
+                        <div class="contact-item">
+                            <i class="fas fa-helicopter"></i>
+                            <span>Nearest Rescue: 15km</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-hospital"></i>
+                            <span>Nearest Medical: 22km</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-small">View All Contacts</button>
+                </div>
+            </div>
+            
+            <!-- Feature 6 - Enhanced Cost Calculator -->
+            <div class="feature-card" data-feature="cost">
+                <div class="feature-icon">
+                    <i class="fas fa-rupee-sign"></i>
+                </div>
+                <h3>Cost Calculator</h3>
+                <p>Estimate your trek budget including permits, guides and equipment</p>
+                <div class="feature-expand">
+                    <div class="cost-estimate">
+                        <div class="cost-item">
+                            <span>Permits:</span>
+                            <span>₹2,500</span>
+                        </div>
+                        <div class="cost-item">
+                            <span>Guide:</span>
+                            <span>₹1,500/day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-small">Calculate Full Budget</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== Treks Section ========== -->
+    <section class="treks" id="treks">
+        <div class="section-title">
+            <h2>Featured Himalayan Treks</h2>
+            <p>Explore our curated selection of the most breathtaking mountain adventures</p>
+        </div>
+        
+        <div class="treks-grid">
+            <!-- Trek 1 - Enhanced with more details -->
+            <div class="trek-card">
+                <div class="trek-image" style="background-image: url('https://cdn.britannica.com/39/76239-050-DE5FCF36/Climbers-side-Nepali-Mount-Everest.jpg');">
+                    <div class="trek-badge">Most Popular</div>
+                </div>
+                <div class="trek-content">
+                    <h3>Everest Base Camp</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sikkim/Nepal</span>
+                        <span><i class="fas fa-calendar-alt"></i> Mar-May, Sep-Nov</span>
+                    </div>
+                    <p class="trek-desc">The iconic trek to the base of the world's highest mountain, offering breathtaking views of Everest and surrounding peaks.</p>
+                    
+                    <div class="trek-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Difficulty:</span>
+                            <span>
+                                <i class="fas fa-circle difficulty-high"></i>
+                                <i class="fas fa-circle difficulty-high"></i>
+                                <i class="fas fa-circle difficulty-high"></i>
+                                <i class="fas fa-circle difficulty-high"></i>
+                                <i class="fas fa-circle"></i>
+                                Challenging
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span>12-14 days</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Max Altitude:</span>
+                            <span>5,364m (17,598 ft)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Best For:</span>
+                            <span>Experienced trekkers, photographers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trek-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>98% Success Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span>Group Size: 4-12</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#" class="btn btn-outline">Save Trek</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trek 2 - Enhanced with more details -->
+            <div class="trek-card">
+                <div class="trek-image" style="background-image: url('https://images.prismic.io/indiahike/ZidYsPPdc1huKsSI_ValleyOfFlowers-PavanJain-Bloomingflowersofthevalley.jpg?auto=compress,format&rect=0,49,1600,800&w=1200&h=600');">
+                    <div class="trek-badge">UNESCO Site</div>
+                </div>
+                <div class="trek-content">
+                    <h3>Valley of Flowers</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Uttarakhand</span>
+                        <span><i class="fas fa-calendar-alt"></i> Jul-Sep</span>
+                    </div>
+                    <p class="trek-desc">UNESCO World Heritage Site known for its meadows of endemic alpine flowers and stunning Himalayan scenery.</p>
+                    
+                    <div class="trek-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Difficulty:</span>
+                            <span>
+                                <i class="fas fa-circle difficulty-medium"></i>
+                                <i class="fas fa-circle difficulty-medium"></i>
+                                <i class="fas fa-circle difficulty-medium"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                Moderate
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span>6-7 days</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Max Altitude:</span>
+                            <span>3,658m (12,000 ft)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Best For:</span>
+                            <span>Nature lovers, beginners</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trek-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>100% Success Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span>Group Size: 2-15</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#" class="btn btn-outline">Save Trek</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trek 3 - Enhanced with more details -->
+            <div class="trek-card">
+                <div class="trek-image" style="background-image: url('https://www.trekhievers.com/system/images/000/500/027/d1b8f9eb64840370b4ecff132982052c/banner/1513417099_1477072986_hampta_1_jpg.jpg?1618328973');">
+                    <div class="trek-badge">Best Views</div>
+                </div>
+                <div class="trek-content">
+                    <h3>Hampta Pass</h3>
+                    <div class="trek-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Himachal Pradesh</span>
+                        <span><i class="fas fa-calendar-alt"></i> Jun-Sep</span>
+                    </div>
+                    <p class="trek-desc">A dramatic crossover trek between the lush Kullu Valley and the arid Lahaul Valley with stunning landscapes.</p>
+                    
+                    <div class="trek-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Difficulty:</span>
+                            <span>
+                                <i class="fas fa-circle difficulty-medium"></i>
+                                <i class="fas fa-circle difficulty-medium"></i>
+                                <i class="fas fa-circle difficulty-medium"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                Moderate
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Duration:</span>
+                            <span>5-6 days</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Max Altitude:</span>
+                            <span>4,270m (14,010 ft)</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Best For:</span>
+                            <span>Adventure seekers, landscape photographers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trek-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <span>95% Success Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <span>Group Size: 3-10</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="btn">View Details</a>
+                        <a href="#" class="btn btn-outline">Save Trek</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== Emergency Section ========== -->
+    <div class="emergency-section">
+    <div class="emergency-header">
+        <h1><i class="fas fa-phone-alt"></i> Mountain Rescue Contacts</h1>
+        <p class="subtitle">Immediate assistance for Himalayan emergencies</p>
+    </div>
+
+    <div class="emergency-grid">
+        <!-- Rescue Organizations -->
+        <div class="emergency-card">
+            <div class="card-header">
+                <i class="fas fa-helicopter"></i>
+                <h2>Rescue Organizations</h2>
+            </div>
+            <ul class="contact-list">
+                <li>
+                    <span class="contact-name">Indian Mountaineering Foundation</span>
+                    <a href="tel:+911124111125" class="contact-number">+91-11-2411-1125</a>
+                </li>
+                <li>
+                    <span class="contact-name">Himalayan Rescue Association</span>
+                    <a href="tel:+915942221271" class="contact-number">+91-5942-221-271</a>
+                </li>
+                <li>
+                    <span class="contact-name">NIM Uttarkashi</span>
+                    <a href="tel:+911374222363" class="contact-number">+91-1374-222-363</a>
+                </li>
+                <li>
+                    <span class="contact-name">Air Rescue Coordination</span>
+                    <a href="tel:+911123093732" class="contact-number">+91-11-2309-3732</a>
+                </li>
+            </ul>
+            <button class="emergency-btn">
+                <i class="fas fa-phone"></i> Call Nearest Rescue
+            </button>
+        </div>
+
+        <!-- Regional Contacts -->
+        <div class="emergency-card">
+            <div class="card-header">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>Regional Contacts</h2>
+            </div>
+            <ul class="contact-list">
+                <li>
+                    <span class="contact-name">Uttarakhand Police</span>
+                    <a href="tel:100" class="contact-number">100 / 112</a>
+                </li>
+                <li>
+                    <span class="contact-name">Himachal Rescue</span>
+                    <a href="tel:108" class="contact-number">108</a>
+                </li>
+                <li>
+                    <span class="contact-name">Sikkim Tourism</span>
+                    <a href="tel:+913592222634" class="contact-number">03592-222634</a>
+                </li>
+                <li>
+                    <span class="contact-name">Ladakh Police Control</span>
+                    <a href="tel:+911982252012" class="contact-number">+91-1982-252-012</a>
+                </li>
+            </ul>
+            <button class="emergency-btn">
+                <i class="fas fa-map"></i> View Regional Contacts
+            </button>
+        </div>
+
+        <!-- Medical Emergency -->
+        <div class="emergency-card">
+            <div class="card-header">
+                <i class="fas fa-ambulance"></i>
+                <h2>Medical Emergency</h2>
+            </div>
+            <ul class="contact-list">
+                <li>
+                    <span class="contact-name">AIIMS Delhi</span>
+                    <a href="tel:+911126588500" class="contact-number">+91-11-2658-8500</a>
+                </li>
+                <li>
+                    <span class="contact-name">Leh Hospital</span>
+                    <a href="tel:+911982252012" class="contact-number">+91-1982-252-012</a>
+                </li>
+                <li>
+                    <span class="contact-name">Altitude Doctor Helpline</span>
+                    <a href="tel:+919810599122" class="contact-number">+91-98105-99122</a>
+                </li>
+                <li>
+                    <span class="contact-name">Pharmacy Locator</span>
+                    <span class="contact-number">Dial *343#</span>
+                </li>
+            </ul>
+            <button class="emergency-btn">
+                <i class="fas fa-hospital"></i> Find Nearest Hospital
+            </button>
+        </div>
+    </div>
+
+    <div class="emergency-footer">
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/2913/2913108.png" alt="Himalayan Explorer Logo">
+            <h3>Himalayan Explorer</h3>
+        </div>
+        <p class="footer-text">
+            Your trusted guide to mountain adventures since 2010.<br>
+            We provide accurate, up-to-date information to make your Himalayan journeys safe and memorable.
+        </p>
+        <div class="footer-buttons">
+            <button class="secondary-btn">
+                <i class="fas fa-shield-alt"></i> Safety Guidelines
+            </button>
+            <button class="secondary-btn">
+                <i class="fas fa-book"></i> Emergency Handbook
+            </button>
+        </div>
+    </div>
+</div>
+    
+    <!-- ========== Footer ========== -->
+   <footer class="footer-container">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913108.png" alt="Himalayan Explorer Logo">
+                <h2>Himalayan Explorer</h2>
+            </div>
+            <p class="brand-description">
+                Your trusted guide to mountain adventures since 2010. We provide accurate, up-to-date information to make your Himalayan journeys safe and memorable.
+            </p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <div class="links-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Popular Treks</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Travel Tips</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Packing Guide</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Permit Information</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Weather Updates</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Trekking Gear</a></li>
+                </ul>
+            </div>
+
+            <div class="links-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> First Aid Guide</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Altitude Sickness</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Leave No Trace</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Trekking Gear</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Photography Tips</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Mountain Dictionary</a></li>
+                </ul>
+            </div>
+
+            <div class="links-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> info@himalayanexplorer.com</li>
+                    <li><i class="fas fa-phone"></i> +91-9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Dehradun, Uttarakhand</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 9AM-6PM</li>
+                </ul>
+                <div class="newsletter">
+                    <h4>Subscribe to our newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2023 Himalayan Explorer. All rights reserved.</p>
+        <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Disclaimer</a>
+        </div>
+    </div>
+</footer>
+    
+    <!-- ========== JavaScript ========== -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
