@@ -61,6 +61,6 @@ git clone https://github.com/yourusername/himalayan-explorer.git
 
 ## Author
 
-**Mandvi-Shukla**  
+**Hemant Saini**  
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/Mandvi-Shukla)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?logo=github)](https://github.com/hemantsaini30)
